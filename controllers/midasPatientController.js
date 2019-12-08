@@ -57,7 +57,6 @@ exports.createPatientProfile = catchAsync(async (req,res,next) => {
     });
 });
 
-
 exports.getPatient = factory.getOne(Patient);
 
 

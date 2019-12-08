@@ -12,7 +12,7 @@ router
 .route('/:id')
 .get(
     midasAuthController.protect,
-    midasAuthController.restrictTo('doctor','admin'),
+    midasAuthController.restrictTo('doctor'),
     midasPatientController.getPatient)    
 
 module.exports = router;

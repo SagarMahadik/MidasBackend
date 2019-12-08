@@ -9,7 +9,7 @@ const midasUserSchema = new mongoose.Schema({
     },
     email : {
         type : String,
-        required : [true, "Pelase enter yoour email"],
+        required : [true, "Pelase enter your email"],
         lowercase : true,
         validate : [validator.isEmail, "Please provide valid email address"]
     },
@@ -57,8 +57,6 @@ midasUserSchema.methods.correctPassword = async function(
     candidatePassword,userPassword){
     return await bcrypt.compare(candidatePassword,userPassword)
 }
-
-
 
 
 const MidasUser = mongoose.model('MidasUser',midasUserSchema);
