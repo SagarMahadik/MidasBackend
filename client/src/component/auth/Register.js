@@ -1,16 +1,21 @@
 import React,{Fragment,useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {setAlert} from '../../action/alert';
+import {register} from '../../action/auth';
+import PropTypes from 'prop-types';
 
-const Register = () => {
+const Register = ({setAlert, register, isAuthenticated,user}) => {
     const [formData, setFormData] = useState({
         name : '',
         email:'',
         password: '',
         passwordConfirm:'',
+        mobile:'',
         role:''
     });
 
-    const {name, email, password, passwordConfirm, role} = formData;
+    const {name, email, password, mobile, passwordConfirm, role} = formData;
 
     const onChange = e => {
         setFormData({...formData,
@@ -20,10 +25,14 @@ const Register = () => {
     const onSubmit = e => {
         e.preventDefault();
         if(password !== passwordConfirm){
-            console.log("Password do not match")
+            setAlert("Password do not match", 'danger');
         }else{
-            console.log(formData)
+            register({ name, email, password, passwordConfirm, role, mobile})
         }
+    }
+
+    if(isAuthenticated){
+        return <Redirect to ="/dashboard"/>
     }
 
     return (
@@ -50,6 +59,14 @@ const Register = () => {
                     value={email}
                     onChange={e => onChange(e)} />
                     
+                </div>
+                <div className="form-group">
+                    <input 
+                    type="text" 
+                    placeholder="Mobile number" 
+                    name="mobile"
+                    value={mobile}
+                    onChange={e => onChange(e)} />                    
                 </div>
                 <div className="form-group">
                 <input
@@ -89,4 +106,16 @@ const Register = () => {
     )
 }
 
-export default Register;
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+    register:PropTypes.func.isRequired,
+    isAuthenticated:PropTypes.bool,
+    user:PropTypes.object.isRequired
+}
+
+const mapStateToProps = state =>({
+    isAuthenticated : state.auth.isAuthenticated,
+    user:state.auth.user
+});
+
+export default connect(mapStateToProps, { setAlert,register })(Register);

@@ -35,13 +35,14 @@ exports.login = catchAsync(async (req,res,next) => {
     const {email, password} = req.body;
 
     if(!email || !password){
-        return next(new AppError('Please enter valid email or password', 401));
+        return res.status(401).json({errors:[{msg:'Enter Invalid Credentials'}]});        
     }
 
     const user = await MidasUser.findOne({email}).select('+password');
 
     if(!user || !(await user.correctPassword(password,user.password))){
-        return next(new AppError('Enter valid email or password', 401));
+        //return next(new AppError('Enter valid email or password', 401));
+        return res.status(401).json({errors:[{msg:'Invalid Credentials'}]});
     }
 
     const token = signToken(user._id, user.role);
@@ -83,6 +84,18 @@ exports.protect = catchAsync(async (req,res,next) => {
     next();       
     
 });
+// TO get user details from token
+
+exports.authenticate = async(req,res)=>{
+    try {
+        const user = await MidasUser.findById(req.user.id).select('-password');
+        res.json(user);
+        
+    } catch (err) {
+        console.log(err.message);
+        res.send(500).send('Server Error')
+    }
+}
 
 exports.restrictTo = (...roles) => {
     return (req,res,next) => {
