@@ -22,7 +22,7 @@ const Login = ({ login, isAuthenticated, user }) => {
   };
 
   //Redirect if logged in
-  if(isAuthenticated){
+  if(isAuthenticated && user){
       //console.log(user.role);            
       return <Redirect to ="/dashboard"/>
   }

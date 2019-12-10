@@ -5,6 +5,7 @@ import Landing from './component/Landing';
 import Login from './component/auth/Login';
 import Register from './component/auth/Register';
 import Alert from './component/layout/Alert';
+import PrivateRoute from './component/routing/PrivateRoute';
 import PatientsLandingPage from './component/midasComponents/PatientsLandingPage';
 import DoctorsLandingPage from './component/midasComponents/DoctorsLandingPage';
 import AdminLandingPage from './component/midasComponents/AdminLandingPage';
@@ -16,7 +17,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import './App.css';
-import { Dashboard } from './component/dashboard/Dashboard';
+
+import Dashboard from './component/dashboard/Dashboard';
 
 if(localStorage.token){
   setAuthToken(localStorage.token);
@@ -38,10 +40,10 @@ const App =()=> {
         <Switch>
           <Route exact path="/register" component ={Register}/>
           <Route exact path="/login" component ={Login}/>
-          <Route exact path="/dashboard" component={Dashboard}/>
+          <PrivateRoute exact path="/dashboard" component={Dashboard}/>
           <Route exact path="/patientsLandingPage" component={PatientsLandingPage}/>
           <Route exact path="/doctorsLandingPage" component={DoctorsLandingPage}/>
-          <Route exact path="/adminLandingPage" component ={AdminLandingPage}/>
+          <PrivateRoute exact path="/adminLandingPage" component ={AdminLandingPage}/>
         </Switch>
       </section>
     </Fragment>
