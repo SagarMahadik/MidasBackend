@@ -37,10 +37,8 @@ const Register = ({setAlert, register, isAuthenticated,user}) => {
 
     return (
         <Fragment>
-            <h1 className="large text-primary">Register here if you want to!</h1>
-            <p className="lead">
-                <i className="fas fa-user"></i> Else fuck off!
-            </p>
+            <h1 className="large text-primary">Register here!</h1>
+
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
                     <input 

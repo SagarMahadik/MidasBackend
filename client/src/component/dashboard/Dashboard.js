@@ -2,16 +2,20 @@ import React,{useEffect} from 'react';
 import {Redirect} from 'react-router-dom';
 import { connect} from 'react-redux';
 import PropTypes from 'prop-types';
-//import store from '../../store';
-//import {loadUser} from '../../action/auth';
-
 
 const Dashboard = ({auth:{user,loading,isAuthenticated}}) => {
-        
-    if(user.role === 'admin'){
-        return <Redirect to='/adminLandingPage'/>
-    }
-           
+        console.log(user.role)
+        switch (user.role) {
+            
+            case 'admin':
+                return <Redirect to="/adminLandingPage"/>
+            case 'doctor':
+                return <Redirect to="/doctorsLandingPage"/>
+            case 'patient':
+                return <Redirect to="/patientsLandingPage"/>
+            default:
+                break;
+        }          
 }
 
 Dashboard.propTypes = {

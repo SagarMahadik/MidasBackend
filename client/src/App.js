@@ -6,9 +6,9 @@ import Login from './component/auth/Login';
 import Register from './component/auth/Register';
 import Alert from './component/layout/Alert';
 import PrivateRoute from './component/routing/PrivateRoute';
-import PatientsLandingPage from './component/midasComponents/PatientsLandingPage';
-import DoctorsLandingPage from './component/midasComponents/DoctorsLandingPage';
-import AdminLandingPage from './component/midasComponents/AdminLandingPage';
+import PatientsLandingPage from './component/midasComponents/midasPatientComponents/PatientsLandingPage';
+import DoctorsLandingPage from './component/midasComponents/midasDoctorComponents/DoctorsLandingPage';
+import AdminLandingPage from './component/midasComponents/midasAdminComponents/AdminLandingPage';
 
 import {loadUser} from './action/auth';
 import setAuthToken from './utils/setAuthToken';
@@ -41,8 +41,8 @@ const App =()=> {
           <Route exact path="/register" component ={Register}/>
           <Route exact path="/login" component ={Login}/>
           <PrivateRoute exact path="/dashboard" component={Dashboard}/>
-          <Route exact path="/patientsLandingPage" component={PatientsLandingPage}/>
-          <Route exact path="/doctorsLandingPage" component={DoctorsLandingPage}/>
+          <PrivateRoute exact path="/patientsLandingPage" component={PatientsLandingPage}/>
+          <PrivateRoute exact path="/doctorsLandingPage" component={DoctorsLandingPage}/>
           <PrivateRoute exact path="/adminLandingPage" component ={AdminLandingPage}/>
         </Switch>
       </section>

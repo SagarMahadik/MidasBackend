@@ -1,0 +1,114 @@
+@import "bourbon";
+
+$gray: #CCCCCC;
+$dark-gray: #444444;
+$white: #FFFFFF;
+
+$vanilla: #1EDD94;
+$chocolate: #DD701E;
+$strawberry: #E41B1B;
+$caramel: #E6B398;
+$coconut: #F7F7F7;
+$sprinkles: #98D2E6;
+
+$base-background: $white;
+
+@mixin option($color) {
+  background-color: $color;
+  border-color: darken($color, 30%);
+  color: darken($color, 50%);
+}
+
+body {
+  background-color: $base-background;
+  color: $gray;
+  font-family: montserrat, sans-serif;
+}
+
+h2 {
+  color: $dark-gray;
+}
+
+form {
+  margin: auto;
+  width: 400px;
+  display:block;
+  
+  div {
+    margin-bottom: 3em;
+    
+  }
+}
+
+input[type=radio] {
+  display: none;
+  
+  & + label {
+    //@include inline-block;
+    @include option($white);
+    border-width: 2px;
+    border-style: solid;
+    border-radius: .5em;
+    padding: .5em 1em;
+  }
+  
+  &:checked + label {
+    &.option11 {
+      @include option($vanilla);
+    }
+    
+    &.option12 {
+      @include option($chocolate);
+    }
+    
+    &.option13 {
+      @include option($strawberry);
+    }
+    
+    &.option21 {
+     @include option($vanilla); 
+    }
+    
+    &.option22 {
+      @include option($chocolate);
+    }
+    
+    &.option23 {
+      @include option($strawberry);
+    }
+    
+    &.option31 {
+     @include option($vanilla); 
+    }
+    
+    &.option32 {
+      @include option($chocolate);
+    }
+    
+    &.option33 {
+      @include option($strawberry);
+    }
+    &.option41 {
+     @include option($vanilla); 
+    }
+    
+    &.option42 {
+      @include option($chocolate);
+    }
+    
+    &.option43 {
+      @include option($strawberry);
+    }
+    &.option51 {
+     @include option($vanilla); 
+    }
+    
+    &.option52 {
+      @include option($chocolate);
+    }
+    
+    &.option53 {
+      @include option($strawberry);
+    }
+  }
+}
