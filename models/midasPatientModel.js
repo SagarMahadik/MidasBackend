@@ -35,7 +35,7 @@ const patientSchema = new mongoose.Schema({
     },
     painParameter5 : {
         type : Number,
-        required : true
+        required : false
     },
     symptomParameter1 : {
         type : Number,
@@ -54,7 +54,7 @@ const patientSchema = new mongoose.Schema({
         required : true
     },symptomParameter5 : {
         type : Number,
-        required : true
+        required : false
     },
     diagnosis :{
         type :String

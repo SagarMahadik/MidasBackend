@@ -29,10 +29,12 @@ const Login = ({ login, isAuthenticated, user }) => {
  
   return (
     <Fragment>
-      <h1 className='large text-primary'>Sign In</h1>
-      <p className='lead'>
-        <i className='fas fa-user' /> Sign Into Your Account
-      </p>
+      <section className ="register">
+      <div className='dark-overlay'>
+      <div className="landing-inner">
+
+      
+
       <form className='form' onSubmit={e => onSubmit(e)}>
         <div className='form-group'>
           <input
@@ -54,10 +56,14 @@ const Login = ({ login, isAuthenticated, user }) => {
           />
         </div>
         <input type='submit' className='btn btn-primary' value='Login' />
-      </form>
-      <p className='my-1'>
+        <p className='my-1'>
         Don't have an account? <Link to='/register'>Sign Up</Link>
       </p>
+      </form>
+      
+      </div>
+      </div>
+      </section>      
     </Fragment>
   );
 };

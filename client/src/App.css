@@ -120,7 +120,6 @@ img {
 }
 .my-1 {
   margin: 1rem 0;
-  text-align: center;
 }
 .my-2 {
   margin: 2rem 0;
@@ -239,7 +238,7 @@ img {
 
 /* Forms */
 .form .form-group {
-  margin: 1.2rem 0;
+  margin-top: 0%;
 }
 
 .form .form-text {
@@ -340,6 +339,17 @@ button {
   position: relative;
   background: url('./img/midaslanding.jpg') no-repeat center center/cover;
   height: 100vh;
+}
+
+.register {
+  position: right;
+  background: url('./img/midaslogin2.jpg') no-repeat center center/cover;
+  height: 100vh;
+  
+}
+
+.login {
+  margin-top: 50%;
 }
 
 .landing-inner {

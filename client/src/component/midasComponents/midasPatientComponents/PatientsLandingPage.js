@@ -59,9 +59,11 @@ const PatientsLandingPage = () => {
                     symptomParameter5}
     
     const nextStep = () => {
+        console.log("I am here")
         setPatientFormData({...patientFormData, step:step+1})
     }
-    
+
+ 
     const previousStep = () => {
         setPatientFormData({...patientFormData,step:step -1})
     }
@@ -101,7 +103,7 @@ const PatientsLandingPage = () => {
             )
         case 4:
             return(
-                <PatientGetWellSoon/>
+                <PatientGetWellSoon values={values}/>
             )    
     
         default:
