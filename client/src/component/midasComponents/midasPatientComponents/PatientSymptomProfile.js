@@ -1,4 +1,5 @@
 import React,{Fragment} from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import './styles/patientSymptomProfile.scss';
 import axios from 'axios';
 
@@ -20,6 +21,9 @@ const PatientSymptomProfile = ({onChange,nextStep,previousStep,values}) => {
   } = values;
 
   const onSubmit =async e => {
+
+    e.preventDefault();
+
     const newPatient = {
       name,
       mobile,
@@ -35,6 +39,7 @@ const PatientSymptomProfile = ({onChange,nextStep,previousStep,values}) => {
       symptomParameter4:symptomParameter4*1
 
     }
+    
     console.log(newPatient);
     console.log(JSON.stringify(newPatient));
     try {
@@ -43,13 +48,14 @@ const PatientSymptomProfile = ({onChange,nextStep,previousStep,values}) => {
       }
       const body = JSON.stringify(newPatient);
 
-      const res = await axios.post('http://127.0.0.1:5000/api/v1/midasPatients', body, config);
-
+      const res = await axios.post('/api/v1/midasPatients', body, config);
+      console.log(res);
       console.log(res.status);
+
       nextStep();
       
     } catch (error) {
-      console.log(error.response.data)
+      console.log(error)
     }
 
   }
